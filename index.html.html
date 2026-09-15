@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Secret Garden-er</title>
+
+<style>
+
+body{
+font-family:Arial, sans-serif;
+background:#dff5e4;
+margin:0;
+padding:0;
+}
+
+.screen{
+padding:20px;
+}
+
+.card{
+background:#fffdf7;
+border-radius:20px;
+padding:20px;
+margin:15px 0;
+box-shadow:0 3px 12px rgba(0,0,0,.1);
+}
+
+button{
+background:#c97951;
+color:white;
+border:none;
+padding:12px 20px;
+border-radius:20px;
+margin:5px;
+cursor:pointer;
+}
+
+button:hover{
+opacity:.9;
+}
+
+h1,h2{
+color:#41724f;
+}
+
+.hidden{
+display:none;
+}
+
+.nav{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+.sectionButton{
+background:white;
+padding:20px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 3px 10px rgba(0,0,0,.1);
+cursor:pointer;
+}
+
+.seedling{
+font-size:60px;
+text-align:center;
+}
+
+.rabbit{
+font-size:80px;
+text-align:center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="splash" class="screen">
+
+<div class="rabbit">🐰</div>
+
+<h1 style="text-align:center;">The Secret Garden-er</h1>
+
+<p id="subtitle" style="text-align:center;">
+Sage is tending the garden...
+</p>
+
+<div style="text-align:center;">
+<button id="enterButton" class="hidden" onclick="enterGarden()">
+🌿 Enter the Garden
+</button>
+</div>
+
+</div>
+
+<div id="home" class="screen hidden">
+
+<h1>🌿 The Secret Garden-er</h1>
+
+<p>🐰 Welcome back! Sage has been busy.</p>
+
+<div class="nav">
+
+<div class="sectionButton" onclick="showSection('plants')">
+🪴 My Plants
+</div>
+
+<div class="sectionButton" onclick="showSection('rooms')">
+🏡 Plant Rooms
+</div>
+
+<div class="sectionButton" onclick="showSection('scan')">
+📷 Scan A Plant
+</div>
+
+<div class="sectionButton" onclick="showSection('watering')">
+💧 Watering
+</div>
+
+<div class="sectionButton" onclick="showSection('seedling')">
+🌱 Safe Seedling
+</div>
+
+<div class="sectionButton" onclick="showSection('hospital')">
+🆘 Plant Hospital
+</div>
+
+<div class="sectionButton" onclick="showSection('garden')">
+📚 Learning Garden
+</div>
+
+<div class="sectionButton" onclick="showSection('wishlist')">
+🌸 Wishlist
+</div>
+
+</div>
+
+</div>
+
+<div id="plants" class="screen hidden">
+
+<button onclick="goHome()">← Home</button>
+
+<h2>🪴 My Plants</h2>
+
+<div class="card">
+
+<input id="plantName"
+placeholder="Plant Name">
+
+<button onclick="addPlant()">
+Add Plant
+</button>
+
+<ul id="plantList"></ul>
+
+</div>
+
+</div>
+
+<div id="rooms" class="screen hidden">
+
+<button onclick="goHome()">← Home</button>
+
+<h2>🏡 Plant Rooms</h2>
+
+<div class="card">
+
+Living Room<br>
+Kitchen<br>
+Bedroom<br>
+Balcony<br>
+Conservatory
+
+</div>
+
+</div>
+
+<div id="scan" class="screen hidden">
+
+<button onclick="goHome()">← Home</button>
+
+<h2>📷 Scan A Plant</h2>
+
+<div class="card">
+
+<p>Future feature:</p>
+
+<p>
+Take a photo and identify:
+</p>
+
+<ul>
+<li>Plant name</li>
+<li>Watering needs</li>
+<li>Humidity needs</li>
+<li>Propagation methods</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="watering" class="screen hidden">
+
+<button onclick="goHome()">← Home</button>
+
+<h2>💧 Watering</h2>
+
+<div class="card">
+
+<input id="waterPlant"
+placeholder="Plant watered">
+
+<button onclick="logWater()">
+Water Plant
+</button>
+
+<ul id="waterList"></ul>
+
+</div>
+
+</div>
+
+<div id="seedling" class="screen hidden">
+
+<button onclick="goHome()">← Home</button>
+
+<div class="seedling">🌱😊</div>
+
+<h2>Safe Seedling</h2>
+
+<div class="card">
+
+<label><input type="checkbox"> Healthy Cutting</label><br>
+<label><input type="checkbox"> Place In Water</label><br>
+<label><input type="checkbox"> Roots Appear</label><br>
+<label><input type="checkbox"> Roots Reach 5cm</label><br>
+<label><input type="checkbox"> Pot Prepared</label><br>
+<label><input type="checkbox"> Transfer To Soil</label><br>
+<label><input type="checkbox"> First New Leaf</label><br>
+<label><input type="checkbox"> Established Plant</label>
+
+</div>
+
+</div>
+
+<div id="hospital" class="screen hidden">
+
+<button onclick="goHome()">← Home</button>
+
+<h2>🆘 Plant Hospital</h2>
+
+<div class="card">
+
+🐰 Let's help this plant recover.
+
+<ul>
+<li>Yellow Leaves</li>
+<li>Brown Tips</li>
+<li>Drooping</li>
+<li>Curling</li>
+<li>Spots</li>
+<li>Leggy Growth</li>
+</ul>
+
+<h3>Things I Already Have</h3>
+
+<ul>
+<li>Pebble Tray</li>
+<li>Bowl of Water</li>
+<li>Cinnamon</li>
+<li>Soft Cloth</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="garden" class="screen hidden">
+
+<button onclick="goHome()">← Home</button>
+
+<h2>📚 Learning Garden</h2>
+
+<div class="card">
+
+🌱 Propagation<br>
+💧 Watering<br>
+☀ Lighting<br>
+🐛 Pests<br>
+🪴 Repotting
+
+</div>
+
+</div>
+
+<div id="wishlist" class="screen hidden">
+
+<button onclick="goHome()">← Home</button>
+
+<h2>🌸 Wishlist</h2>
+
+<div class="card">
+
+□ String of Pearls<br>
+□ Pink Princess Philodendron<br>
+□ Raven ZZ Plant<br>
+□ Variegated Monstera
+
+</div>
+
+</div>
+
+<script>
+
+const subtitles = [
+"Sage is tending the garden...",
+"Last-minute watering...",
+"Sage got the garden ready."
+];
+
+let index = 0;
+
+const subtitle =
+document.getElementById("subtitle");
+
+const enterButton =
+document.getElementById("enterButton");
+
+const interval =
+setInterval(() => {
+
+index++;
+
+if(index < subtitles.length){
+
+subtitle.innerText =
+subtitles[index];
+
+}
+else{
+
+clearInterval(interval);
+
+enterButton.classList.remove(
+"hidden"
+);
+
+}
+
+},2000);
+
+function enterGarden(){
+
+document.getElementById(
+"splash"
+).classList.add("hidden");
+
+document.getElementById(
+"home"
+).classList.remove("hidden");
+
+}
+
+function showSection(id){
+
+document.querySelectorAll(
+".screen"
+).forEach(
+screen => screen.classList.add(
+"hidden"
+)
+);
+
+document.getElementById(
+id
+).classList.remove("hidden");
+
+}
+
+function goHome(){
+
+document.querySelectorAll(
+".screen"
+).forEach(
+screen => screen.classList.add(
+"hidden"
+)
+);
+
+document.getElementById(
+"home"
+).classList.remove("hidden");
+
+}
+
+function addPlant(){
+
+let name =
+document.getElementById(
+"plantName"
+).value;
+
+let list =
+document.getElementById(
+"plantList"
+);
+
+let item =
+document.createElement("li");
+
+item.innerText = name;
+
+list.appendChild(item);
+
+}
+
+function logWater(){
+
+let name =
+document.getElementById(
+"waterPlant"
+).value;
+
+let list =
+document.getElementById(
+"waterList"
+);
+
+let item =
+document.createElement("li");
+
+item.innerText =
+name + " watered";
+
+list.appendChild(item);
+
+}
+
+</script>
+
+</body>
+</html>
